@@ -1,0 +1,41 @@
+﻿@model IEnumerable<icecreamshop.Models.Flavour>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FlavourName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlavourDescription)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlavourName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlavourDescription)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FlavourId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FlavourId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FlavourId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

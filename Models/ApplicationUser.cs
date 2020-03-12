@@ -29,5 +29,6 @@ namespace icecreamshop.Models
         [Display(Name = "Postort")]
         public string Town { get; set; }
 
+        public virtual ICollection<OrderBox> OrderBox { get; set; }
     }
 }

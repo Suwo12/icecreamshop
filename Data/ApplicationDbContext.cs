@@ -13,5 +13,6 @@ namespace icecreamshop.Data
             : base(options)
         {
         }
+        public DbSet<icecreamshop.Models.Flavour> Flavour { get; set; }
     }
 }

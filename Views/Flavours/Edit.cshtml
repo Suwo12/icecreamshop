@@ -1,0 +1,39 @@
+﻿@model icecreamshop.Models.Flavour
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Flavour</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FlavourId" />
+            <div class="form-group">
+                <label asp-for="FlavourName" class="control-label"></label>
+                <input asp-for="FlavourName" class="form-control" />
+                <span asp-validation-for="FlavourName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FlavourDescription" class="control-label"></label>
+                <input asp-for="FlavourDescription" class="form-control" />
+                <span asp-validation-for="FlavourDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
