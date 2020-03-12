@@ -6,27 +6,30 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using icecreamshop.Data;
+using icecreamshop.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace icecreamshop.Models
 {
     public class FlavoursController : Controller
     {
         private readonly ApplicationDbContext _context;
-
-        public FlavoursController(ApplicationDbContext context)
+        private readonly IHostingEnvironment hostingEnviroment;//tillägg för IHostingEnviroment
+        public FlavoursController(ApplicationDbContext context, IHostingEnvironment hostingEnviroment)
         {
             _context = context;
         }
 
         // GET: Flavours
-        [HttpGet("Smaker")] //Override default med annan sökväg/route
+       // [HttpGet("Smaker")] //Override default med annan sökväg/route
         public async Task<IActionResult> Index()
         {
             return View(await _context.Flavour.ToListAsync());
         }
 
         // GET: Flavours/Details/5
-        [HttpGet("Smaker/Detaljer/")] //Override default med annan sökväg/route
+        //[HttpGet("Smaker/Detaljer/")] //Override default med annan sökväg/route
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,7 +48,7 @@ namespace icecreamshop.Models
         }
 
         // GET: Flavours/Create
-        [HttpGet("Smaker/Skapa")]
+       // [HttpGet("Smaker/Skapa")]
         public IActionResult Create()
         {
             return View();
@@ -56,17 +59,31 @@ namespace icecreamshop.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FlavourId,FlavourName,FlavourDescription")] Flavour flavour)
+        public IActionResult Create(FlavourCreateViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(flavour);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(flavour);
-        }
+                string uniqueFileName = null; //Filnamn sätts till null initialt
+                if (model.Photo != null)
+                {
+                  string uploadsFolder = Path.Combine(hostingEnviroment.WebRootPath, "images");//Sparar ner wwwroot path och lagrar i sträng
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;//Skapar unika filnamn för att inte overrida bilder med guid global unique identifier, varje gång GUID metoden anropas returneras ett unikt id som konverteras till sträng med tillägg för ett _ och sedan läggs uploadedFilename till
+                   string filePath = Path.Combine(uploadsFolder, uniqueFileName);//Kombinerar strängarna uploadsFolder och uniqueFileName och lagrar det i en strängvariabel
+                    model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));                                                          //Kopierar uppladdad bild till image folder med metoden CopyTo i IFormFile 
+                }
+                Flavour newFlavour = new Flavour
+                {
+                    FlavourName = model.FlavourName,
+                    FlavourDescription = model.FlavourDescription,
+                    PhotoPath = uniqueFileName
+                };
 
+                _context.Add(newFlavour);
+
+                return RedirectToAction("details", new { id = newFlavour.FlavourId });
+            }
+            return View();
+        }
         // GET: Flavours/Edit/5
 
         public async Task<IActionResult> Edit(int? id)

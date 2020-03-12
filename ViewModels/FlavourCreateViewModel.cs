@@ -1,15 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace icecreamshop.Models
+namespace icecreamshop.ViewModels
 {
-    public class Flavour
+    public class FlavourCreateViewModel
     {
-        public int FlavourId { get; set; }
-
         [Required(ErrorMessage = "Ange namn på smak")]
         [Display(Name = "Smak")]
         public string FlavourName { get; set; }
@@ -18,8 +17,6 @@ namespace icecreamshop.Models
         [Display(Name = "Beskrivning")]
         public string FlavourDescription { get; set; }
 
-        public string PhotoPath { get; set; }
-
-        public virtual ICollection<Product> Products { get; set; }//Many-to-many relationship connection
+        public IFormFile Photo { get; set; }
     }
 }
