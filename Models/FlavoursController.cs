@@ -19,6 +19,7 @@ namespace icecreamshop.Models
         public FlavoursController(ApplicationDbContext context, IHostingEnvironment hostingEnviroment)
         {
             _context = context;
+           this.hostingEnviroment = hostingEnviroment;//Deklarerar hostingEnviroment
         }
 
         // GET: Flavours
@@ -59,7 +60,7 @@ namespace icecreamshop.Models
   
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(FlavourCreateViewModel model)
+        public async Task<IActionResult> CreateAsync(FlavourCreateViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -79,8 +80,8 @@ namespace icecreamshop.Models
                 };
 
                 _context.Add(newFlavour);
-
-                return RedirectToAction("details", new { id = newFlavour.FlavourId });
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
             return View();
         }

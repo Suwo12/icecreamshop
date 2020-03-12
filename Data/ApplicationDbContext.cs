@@ -14,5 +14,6 @@ namespace icecreamshop.Data
         {
         }
         public DbSet<icecreamshop.Models.Flavour> Flavour { get; set; }
+        public DbSet<icecreamshop.Models.OrderBox> OrderBoxes { get; set; }
     }
 }

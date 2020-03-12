@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using icecreamshop.Data;
 
 namespace icecreamshop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200312153523_ChangesToTableProducts")]
+    partial class ChangesToTableProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -269,25 +271,51 @@ namespace icecreamshop.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("FlavourId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
                     b.Property<float>("OrderSum")
                         .HasColumnType("real");
 
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("OrderBoxId");
 
-                    b.HasIndex("FlavourId");
+                    b.HasIndex("ProductId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("OrderBoxes");
+                    b.ToTable("OrderBox");
+                });
+
+            modelBuilder.Entity("icecreamshop.Models.Product", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FlavorId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FlavourId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderBoxId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId");
+
+                    b.HasIndex("FlavourId");
+
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -343,15 +371,22 @@ namespace icecreamshop.Data.Migrations
 
             modelBuilder.Entity("icecreamshop.Models.OrderBox", b =>
                 {
-                    b.HasOne("icecreamshop.Models.Flavour", "Flavour")
+                    b.HasOne("icecreamshop.Models.Product", "Products")
                         .WithMany("OrderBox")
-                        .HasForeignKey("FlavourId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("icecreamshop.Models.ApplicationUser", "User")
                         .WithMany("OrderBox")
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("icecreamshop.Models.Product", b =>
+                {
+                    b.HasOne("icecreamshop.Models.Flavour", "Flavour")
+                        .WithMany("Products")
+                        .HasForeignKey("FlavourId");
                 });
 #pragma warning restore 612, 618
         }

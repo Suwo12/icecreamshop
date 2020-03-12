@@ -20,6 +20,6 @@ namespace icecreamshop.Models
 
         public string PhotoPath { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }//Many-to-many relationship connection
+        public virtual ICollection<OrderBox> OrderBox { get; set; }//Many-to-many relationship connection
     }
 }
