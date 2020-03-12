@@ -9,34 +9,32 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FlavourName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FlavourDescription)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FlavourName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FlavourDescription)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.FlavourId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.FlavourId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.FlavourId">Delete</a> |
-                <a asp-controller="OrderBox" asp-action="Create" asp-route-id="@item.FlavourId">Köp</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="card-deck">
+    <div class="row justify-content-center m-3">
+        @foreach (var item in Model)
+        {
+            var photoPath = "~/images/" + (item.PhotoPath ?? "glass2.jpg");
+
+        <div class="card" style="min-width: 18rem; max-width: 30.5%; margin-bottom: 2%;">
+            <div class="card-header">
+                <h3>@Html.DisplayFor(modelItem => item.FlavourName)</h3>
+            </div>
+            <div class="card-body text-center">
+                <img class="card-img-top" src="@photoPath" alt="glassbild" asp-append-version="true" />
+                <div class="card-body text-center">
+                    @Html.DisplayFor(modelItem => item.FlavourDescription)
+                </div>
+            </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Edit" asp-route-id="@item.FlavourId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.FlavourId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.FlavourId">Delete</a> |
+                    <a class="buyButton" asp-controller="OrderBox" asp-action="Create" asp-route-id="@item.FlavourId">Köp</a>
+                </div>
+          
+        </div>
+
+        }
+    </div>
+</div>
