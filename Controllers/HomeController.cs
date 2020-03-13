@@ -23,6 +23,11 @@ namespace icecreamshop.Controllers
             return View();
         }
 
+        public IActionResult About() //Om oss sidan
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

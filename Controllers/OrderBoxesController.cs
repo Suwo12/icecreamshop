@@ -29,6 +29,14 @@ namespace icecreamshop.Models
             return View(await applicationDbContext.ToListAsync());
         }
 
+        // GET: OrderBoxes Successpage
+        [HttpGet("order/success")] //sida som man hamnar på om man lyckats med beställning
+        public IActionResult OrderSuccess()
+        {
+            return View();
+        }
+
+
         // GET: OrderBoxes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -57,8 +65,6 @@ namespace icecreamshop.Models
         }
 
         // POST: OrderBoxes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("OrderBoxId,OrderSum,OrderDate,FlavourId,UserId")] OrderBox orderBox)
@@ -67,7 +73,8 @@ namespace icecreamshop.Models
             {
                 _context.Add(orderBox);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("success", "order");
+                // return RedirectToAction(nameof(Index));
             }
             ViewData["FlavourId"] = new SelectList(_context.Flavour, "FlavourId", "FlavourDescription", orderBox.FlavourId);
             return View(orderBox);
@@ -91,8 +98,6 @@ namespace icecreamshop.Models
         }
 
         // POST: OrderBoxes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("OrderBoxId,OrderSum,OrderDate,FlavourId")] OrderBox orderBox)
