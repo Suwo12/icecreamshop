@@ -9,6 +9,7 @@ using icecreamshop.Data;
 using icecreamshop.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace icecreamshop.Models
 {
@@ -23,14 +24,14 @@ namespace icecreamshop.Models
         }
 
         // GET: Flavours
-       // [HttpGet("Smaker")] //Override default med annan sökväg/route
+       [HttpGet("smaker")] //Override default med annan sökväg/route
         public async Task<IActionResult> Index()
         {
             return View(await _context.Flavour.ToListAsync());
         }
 
         // GET: Flavours/Details/5
-        //[HttpGet("Smaker/Detaljer/")] //Override default med annan sökväg/route
+        [HttpGet("smaker/detaljer/")] //Override default med annan sökväg/route
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -49,7 +50,7 @@ namespace icecreamshop.Models
         }
 
         // GET: Flavours/Create
-       // [HttpGet("Smaker/Skapa")]
+      [HttpGet("smaker/skapa")]
         public IActionResult Create()
         {
             return View();
@@ -57,8 +58,8 @@ namespace icecreamshop.Models
 
         // POST: Flavours/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-  
-        [HttpPost]
+
+        [HttpPost("smaker/skapa")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateAsync(FlavourCreateViewModel model)
         {
@@ -86,7 +87,7 @@ namespace icecreamshop.Models
             return View();
         }
         // GET: Flavours/Edit/5
-
+        [Authorize(Policy = "RequireAdmin")]//Kräver att man är Admin med using Microsoft.AspNetCore.Authorization;
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -103,8 +104,7 @@ namespace icecreamshop.Models
         }
 
         // POST: Flavours/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Policy = "RequireAdmin")]//Kräver att man är Admin med using Microsoft.AspNetCore.Authorization;
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("FlavourId,FlavourName,FlavourDescription")] Flavour flavour)
@@ -138,6 +138,7 @@ namespace icecreamshop.Models
         }
 
         // GET: Flavours/Delete/5
+        [Authorize(Policy = "RequireAdmin")]//Kräver att man är Admin med using Microsoft.AspNetCore.Authorization;
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -156,6 +157,7 @@ namespace icecreamshop.Models
         }
 
         // POST: Flavours/Delete/5
+        [Authorize(Policy = "RequireAdmin")]//Kräver att man är Admin med using Microsoft.AspNetCore.Authorization;
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

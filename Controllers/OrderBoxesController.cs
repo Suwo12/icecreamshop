@@ -59,6 +59,8 @@ namespace icecreamshop.Models
         // GET: OrderBoxes/Create
         public IActionResult Create(int? id)
         {
+            // var ChoosenObj = (_context.Flavour.Where(p => p.FlavourId == id), "FlavourId", "FlavourName");
+            //ViewBag.FlavourId = ChoosenObj;
             ViewData["FlavourId"] = new SelectList(_context.Flavour.Where(p => p.FlavourId == id), "FlavourId", "FlavourName");//Sortering för att bara ta med album med det id som skickats i parameterpassning
             ViewData["UserId"] = _userManager.GetUserId(User);//För att komma åt UserId till beställning
             return View();

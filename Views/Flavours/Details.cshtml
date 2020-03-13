@@ -27,6 +27,9 @@
     </div>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.FlavourId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    @if (User.Identity.Name == "Admin@mail.com")
+    {
+        <a asp-action="Edit" asp-route-id="@Model.FlavourId">Edit</a> 
+    }
+<a asp-action="Index">Tillbaka till smaker</a>
 </div>
