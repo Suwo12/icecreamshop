@@ -6,16 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using icecreamshop.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace icecreamshop.Models
 {
     public class OrderBoxesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager; //Tillägg för att kunna komma åt userid
 
-        public OrderBoxesController(ApplicationDbContext context)
+        public OrderBoxesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;//Tillägg för att komma åt userId
         }
 
         // GET: OrderBoxes
@@ -48,7 +51,8 @@ namespace icecreamshop.Models
         // GET: OrderBoxes/Create
         public IActionResult Create(int? id)
         {
-            ViewData["FlavourId"] = new SelectList(_context.Flavour, "FlavourId", "FlavourDescription");
+            ViewData["FlavourId"] = new SelectList(_context.Flavour.Where(p => p.FlavourId == id), "FlavourId", "FlavourName");//Sortering för att bara ta med album med det id som skickats i parameterpassning
+            ViewData["UserId"] = _userManager.GetUserId(User);//För att komma åt UserId till beställning
             return View();
         }
 
@@ -57,7 +61,7 @@ namespace icecreamshop.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderBoxId,OrderSum,OrderDate,FlavourId")] OrderBox orderBox)
+        public async Task<IActionResult> Create([Bind("OrderBoxId,OrderSum,OrderDate,FlavourId,UserId")] OrderBox orderBox)
         {
             if (ModelState.IsValid)
             {

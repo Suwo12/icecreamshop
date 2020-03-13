@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -16,8 +17,8 @@ namespace icecreamshop.Models
         [Display(Name = "Beställda smaker")]
         public int FlavourId { get; set; }//Hämtar in ProductId från Product som FK
         [Display(Name = "Beställare")]
-        public ApplicationUser User { get; set; }//Hämtar in userId från AspNetUser som FK
-
+        public string UserId { get; set; }//Hämtar in userId från AspNetUser som FK
+        public virtual ApplicationUser User { get; set; }//Hämtar in userId från AspNetUser som FK
         public virtual Flavour Flavour { get; set; }//Many-to-many relationship connection
     }
 }
