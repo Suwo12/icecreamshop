@@ -17,6 +17,10 @@ namespace icecreamshop.ViewModels
         [Display(Name = "Beskrivning")]
         public string FlavourDescription { get; set; }
 
+        [Required(ErrorMessage = "Ange ett pris")]
+        [Display(Name = "Pris")]
+        public double FlavourPrice { get; set; }
+
         public IFormFile Photo { get; set; }
     }
 }

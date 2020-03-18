@@ -7,6 +7,7 @@ using icecreamshop.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace icecreamshop.Areas.Identity.Pages.Account.Manage
 {
@@ -25,6 +26,8 @@ namespace icecreamshop.Areas.Identity.Pages.Account.Manage
 
         public string Username { get; set; }
 
+       public string firstNameValue { get; set; }
+
         [TempData]
         public string StatusMessage { get; set; }
 
@@ -34,7 +37,7 @@ namespace icecreamshop.Areas.Identity.Pages.Account.Manage
         public class InputModel
         {
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Telefonnummer")]
             public string PhoneNumber { get; set; }
         }
 
@@ -42,7 +45,6 @@ namespace icecreamshop.Areas.Identity.Pages.Account.Manage
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-
             Username = userName;
 
             Input = new InputModel
@@ -58,8 +60,17 @@ namespace icecreamshop.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-
+            var userId = _userManager.GetUserId(User);
+            var objFirstNam = new SelectList(_userManager.Users.Where(p => p.Id == userId).Select(User => User.FirstName));
+           
+            foreach( var name in objFirstNam) {
+               firstNameValue = name.Value;
+               ViewData["FirstName"] = firstNameValue;
+            }
+          
+  
             await LoadAsync(user);
+          
             return Page();
         }
 
@@ -68,7 +79,7 @@ namespace icecreamshop.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Hittade ingen användare med användar-ID '{_userManager.GetUserId(User)}'.");
             }
 
             if (!ModelState.IsValid)
@@ -89,7 +100,7 @@ namespace icecreamshop.Areas.Identity.Pages.Account.Manage
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Din profil har blivit uppdaterad";
             return RedirectToPage();
         }
     }

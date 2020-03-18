@@ -14,6 +14,7 @@ namespace icecreamshop.Models
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager; //Tillägg för att kunna komma åt userid
+   
 
         public OrderBoxesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
@@ -22,7 +23,7 @@ namespace icecreamshop.Models
         }
 
         // GET: OrderBoxes
-        [HttpGet("order")] //Override default med annan sökväg/route
+        [HttpGet("ordrar")] //Override default med annan sökväg/route
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.OrderBoxes.Include(o => o.Flavour);
@@ -30,7 +31,7 @@ namespace icecreamshop.Models
         }
 
         // GET: OrderBoxes Successpage
-        [HttpGet("order/success")] //sida som man hamnar på om man lyckats med beställning
+        [HttpGet("order/skickad")] //sida som man hamnar på om man lyckats med beställning
         public IActionResult OrderSuccess()
         {
             return View();
@@ -38,6 +39,7 @@ namespace icecreamshop.Models
 
 
         // GET: OrderBoxes/Details/5
+        [HttpGet("order/detaljer/")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -57,25 +59,29 @@ namespace icecreamshop.Models
         }
 
         // GET: OrderBoxes/Create
+        [HttpGet("order/skapa")]
         public IActionResult Create(int? id)
         {
-            // var ChoosenObj = (_context.Flavour.Where(p => p.FlavourId == id), "FlavourId", "FlavourName");
-            //ViewBag.FlavourId = ChoosenObj;
+      
             ViewData["FlavourId"] = new SelectList(_context.Flavour.Where(p => p.FlavourId == id), "FlavourId", "FlavourName");//Sortering för att bara ta med album med det id som skickats i parameterpassning
             ViewData["UserId"] = _userManager.GetUserId(User);//För att komma åt UserId till beställning
+            ViewData["FlavourPrice"] = new SelectList(_context.Flavour.Where(p => p.FlavourId == id), "FlavourId", "FlavourPrice");//Sortering för att bara ta med album med det id som skickats i parameterpassning
+            //ViewData["OrderSum"] = new SelectList(_context.Flavour.Where(p => p.FlavourId == id).Select(Flavour => Flavour.FlavourPrice * 20), "FlavourId", "FlavourPrice");
+            var query  = _context.Flavour.Where(p => p.FlavourId == id).Select(Flavour => Flavour.FlavourPrice * 20);
+            ViewData["OrderSum"] = new SelectList(query);
             return View();
         }
 
         // POST: OrderBoxes/Create
-        [HttpPost]
+        [HttpPost("order/skapa")] //Override default med annan sökväg/route
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderBoxId,OrderSum,OrderDate,FlavourId,UserId")] OrderBox orderBox)
+            public async Task<IActionResult> Create([Bind("OrderBoxId,OrderSum,OrderDate,FlavourId,UserId")] OrderBox orderBox)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(orderBox);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("success", "order");
+                return RedirectToAction("skickad", "order");//Redirectar användare till en landningssida istället för förinställt till index då det bara är admin som ska ha tillgång till den sidan
                 // return RedirectToAction(nameof(Index));
             }
             ViewData["FlavourId"] = new SelectList(_context.Flavour, "FlavourId", "FlavourDescription", orderBox.FlavourId);

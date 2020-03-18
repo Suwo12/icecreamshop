@@ -1,7 +1,7 @@
 ﻿@model icecreamshop.Models.Flavour
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Ändra smak";
 }
 
 <h1>Edit</h1>
@@ -19,12 +19,17 @@
                 <span asp-validation-for="FlavourName" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="FlavourPrice" class="control-label"></label>
+                <input asp-for="FlavourPrice" class="form-control" />
+                <span asp-validation-for="FlavourPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="FlavourDescription" class="control-label"></label>
                 <input asp-for="FlavourDescription" class="form-control" />
                 <span asp-validation-for="FlavourDescription" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Spara" class="btn btn-primary" />
             </div>
         </form>
     </div>

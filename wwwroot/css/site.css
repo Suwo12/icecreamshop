@@ -6,7 +6,8 @@
 
 /* Provide sufficient contrast against white background */
 a {
-    color: #0366d6;
+    /*color: #0366d6;*/
+    color: #695BB9;
 }
 
 .btn-primary {
@@ -23,7 +24,7 @@ a {
 
 /* Sticky footer styles
 -------------------------------------------------- */
-html {
+    html {
     font-size: 14px;
 }
 
@@ -53,6 +54,10 @@ button.accept-policy {
 /*MY settings start*/
 .navbar {
     background-color: #fefce0;
+}
+
+.navbar a {
+    color: #7d6555 !important;
 }
 
 .cone {
@@ -89,7 +94,29 @@ button.accept-policy {
 h3 {
     color: darkgray; 
 }
-
+h1, h2, h3 {
+    font-family: 'Baloo Bhaina', 'Pacifico','Open Sans', sans-serif;
+}
+h2 {
+    text-shadow: 0 0 10px #ffffff, 0 0 5px #b3d7ff;
+    color: #695BB9;
+    font-size: 3em;
+}
+h1 {
+    text-shadow: 0 0 10px #ffffff, 0 0 5px #b3d7ff;
+    color: #695BB9;
+    font-size: 3.2em;
+}
+h3 {
+    text-shadow: 0 0 10px #ffffff, 0 0 5px #b3d7ff;
+    color: #695BB9;
+    font-size: 2.3em;
+}
+h4 {
+    text-shadow: 0 0 10px #ffffff, 0 0 5px #b3d7ff;
+    color: #695BB9;
+    font-size: 2em;
+}
 .buyButton {
     display: block;
     border-radius: 5px;
@@ -98,9 +125,92 @@ h3 {
     padding: 0.3em;
     margin-top: 8%;
 }
+.speech-bubble {
+    position: relative;
+    background: #ffffff;
+    border-radius: .4em;
+    text-align: center;
+    width: 27%;
+    padding: 0.2%;
+}
+.speech-bubble:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border: 28px solid transparent;
+        border-top-color: #ffffff;
+        border-bottom: 0;
+        border-left: 0;
+        margin-left: -14px;
+        margin-bottom: -28px;
+}
+.bubblep {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.7em;
+    color: cadetblue;
+}
+
+.icecreamguy {
+    -webkit-animation: jello-horizontal 0.9s both;
+    animation: jello-horizontal 0.9s both;
+}
+
+
+#headingIndex {
+    text-shadow: 0 0 10px #ffffff, 0 0 5px #fff14d;
+    color: #695BB9;
+    font-size: 4em;
+    -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+#flavourLink {
+    -webkit-animation: jello-horizontal 0.9s both;
+    animation: jello-horizontal 0.9s both;
+    color: white !important;
+    background-color: #695BB9;
+    text-align: center;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+    width: 17%;
+    display: inline-block;
+}
+
+/*testing gif animation start*/
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+    z-index: 99;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    -moz-opacity: 0.8;
+    min-height: 100%;
+    width: 100%;
+}
+
+.loading {
+    font-family: Arial;
+    font-size: 10pt;
+    border: 5px solid #67CFF5;
+    width: 200px;
+    height: 100px;
+    display: none;
+    position: fixed;
+    background-color: White;
+    z-index: 999;
+}
+/*testing gif animation end*/
 
 
 /*MY settings end */
+
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -111,7 +221,7 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
-    background-color: #ffdfee;
+    background-color: #FFE5F0;
 }
 
 .footer {
@@ -123,9 +233,13 @@ body {
     white-space: nowrap;
     line-height: 60px; /* Vertically center the text there */
 }
+
+.fas fa-arrow-circle-left{
+    font-size:2em;
+    color:aquamarine;
+}
 /* Animations start
 -------------------------------------------------- */
-
 /* Kula studsar in */
 @-webkit-keyframes bounce-in-top {
     0% {
@@ -247,5 +361,188 @@ body {
     }
 }
 /* Kula studsar in slut */
+/* H1 index focus in */
+@-webkit-keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+/* H1 indexfocus in */
+/*icecreamguy wobble start */
+@-webkit-keyframes jello-horizontal {
+    0% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    30% {
+        -webkit-transform: scale3d(1.25, 0.75, 1);
+        transform: scale3d(1.25, 0.75, 1);
+    }
+
+    40% {
+        -webkit-transform: scale3d(0.75, 1.25, 1);
+        transform: scale3d(0.75, 1.25, 1);
+    }
+
+    50% {
+        -webkit-transform: scale3d(1.15, 0.85, 1);
+        transform: scale3d(1.15, 0.85, 1);
+    }
+
+    65% {
+        -webkit-transform: scale3d(0.95, 1.05, 1);
+        transform: scale3d(0.95, 1.05, 1);
+    }
+
+    75% {
+        -webkit-transform: scale3d(1.05, 0.95, 1);
+        transform: scale3d(1.05, 0.95, 1);
+    }
+
+    100% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes jello-horizontal {
+    0% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    30% {
+        -webkit-transform: scale3d(1.25, 0.75, 1);
+        transform: scale3d(1.25, 0.75, 1);
+    }
+
+    40% {
+        -webkit-transform: scale3d(0.75, 1.25, 1);
+        transform: scale3d(0.75, 1.25, 1);
+    }
+
+    50% {
+        -webkit-transform: scale3d(1.15, 0.85, 1);
+        transform: scale3d(1.15, 0.85, 1);
+    }
+
+    65% {
+        -webkit-transform: scale3d(0.95, 1.05, 1);
+        transform: scale3d(0.95, 1.05, 1);
+    }
+
+    75% {
+        -webkit-transform: scale3d(1.05, 0.95, 1);
+        transform: scale3d(1.05, 0.95, 1);
+    }
+
+    100% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+/*icecreamguy wobble end */
+
+/*flavourLink jello start */
+@-webkit-keyframes jello-horizontal {
+    0% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    30% {
+        -webkit-transform: scale3d(1.25, 0.75, 1);
+        transform: scale3d(1.25, 0.75, 1);
+    }
+
+    40% {
+        -webkit-transform: scale3d(0.75, 1.25, 1);
+        transform: scale3d(0.75, 1.25, 1);
+    }
+
+    50% {
+        -webkit-transform: scale3d(1.15, 0.85, 1);
+        transform: scale3d(1.15, 0.85, 1);
+    }
+
+    65% {
+        -webkit-transform: scale3d(0.95, 1.05, 1);
+        transform: scale3d(0.95, 1.05, 1);
+    }
+
+    75% {
+        -webkit-transform: scale3d(1.05, 0.95, 1);
+        transform: scale3d(1.05, 0.95, 1);
+    }
+
+    100% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes jello-horizontal {
+    0% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    30% {
+        -webkit-transform: scale3d(1.25, 0.75, 1);
+        transform: scale3d(1.25, 0.75, 1);
+    }
+
+    40% {
+        -webkit-transform: scale3d(0.75, 1.25, 1);
+        transform: scale3d(0.75, 1.25, 1);
+    }
+
+    50% {
+        -webkit-transform: scale3d(1.15, 0.85, 1);
+        transform: scale3d(1.15, 0.85, 1);
+    }
+
+    65% {
+        -webkit-transform: scale3d(0.95, 1.05, 1);
+        transform: scale3d(0.95, 1.05, 1);
+    }
+
+    75% {
+        -webkit-transform: scale3d(1.05, 0.95, 1);
+        transform: scale3d(1.05, 0.95, 1);
+    }
+
+    100% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+/*flavourLink jello end */
+
 /* Animations end
 -------------------------------------------------- */

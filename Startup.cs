@@ -54,22 +54,22 @@ namespace icecreamshop
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+               
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseHttpsRedirection();//Möjliggör att skicka användare vidare till annan sida genom redirect
+            app.UseStaticFiles();//Tillägg för statiska filer så som css och liknande i wwwroot
 
-            app.UseRouting();
+            app.UseRouting();//Tillägg för routing
 
-            app.UseAuthentication();
-            app.UseAuthorization();
+            app.UseAuthentication();//Tillägg för autensiering och login
+            app.UseAuthorization();//Tillägg för att kontrollera behörighet för inloggade användare/åtkomst till data
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");//Inställning för endpoints
                 endpoints.MapRazorPages();
             });
         }

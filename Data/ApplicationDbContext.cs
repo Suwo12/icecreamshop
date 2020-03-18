@@ -9,6 +9,8 @@ namespace icecreamshop.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        internal readonly object ApplicationUser;
+
         public ApplicationDbContext()
         {
         }

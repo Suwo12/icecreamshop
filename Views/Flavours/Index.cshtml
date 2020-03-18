@@ -29,18 +29,18 @@
                     <div class="card-body text-center">
                         <img class="card-img-top" src="@photoPath" alt="glassbild" asp-append-version="true" />
                         <div class="card-body text-center">
-                            @Html.DisplayFor(modelItem => item.FlavourDescription)
+                            <p>   @Html.DisplayFor(modelItem => item.FlavourPrice)kronor/strut</p>
                         </div>
                     </div>
                     <div class="card-footer text-center">
                         @if (User.Identity.Name == "Admin@mail.com")
                         {
-                            <a asp-action="Edit" asp-route-id="@item.FlavourId">Ändra</a>
+                            <a asp-action="Edit" asp-route-id="@item.FlavourId"><i class="fas fa-edit"></i></a>
                         }
-                        <a asp-action="Details" asp-route-id="@item.FlavourId">Smakfull info</a>
+                        <a asp-action="Details" asp-route-id="@item.FlavourId"><i class="fas fa-ice-cream"></i> info</a>
                         @if (User.Identity.Name == "Admin@mail.com")
                         {
-                            <a asp-action="Delete" asp-route-id="@item.FlavourId">Ta bort</a>
+                            <a asp-action="Delete" asp-route-id="@item.FlavourId"><i class="fas fa-trash"></i></a>
                         }
                         @if (SignInManager.IsSignedIn(User))
                         {

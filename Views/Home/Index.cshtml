@@ -1,11 +1,32 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<icecreamshop.Models.ApplicationUser> SignInManager
+@{
     ViewData["Title"] = "Glassigt";
 }
+
+
+
+@if (SignInManager.IsSignedIn(User))
+{<div>
+    <div class="speech-bubble">
+            <p class="bubblep">Du är inloggad som @User.Identity.Name</p>
+        </div>
+        <img style="width:9%;" src="~/images/icecreamguy.png" alt="icecreamguy vector" class="icecreamguy"/>
+    </div>
+}
+<div class="justify-content-center text-center">
+    <h1 id="headingIndex" class="w3-animate-fading">Livet ska vara Glassigt</h1>
+    <a id="flavourLink" class="nav-link text-dark" aria-label="Länk till smaker" asp-area="" asp-controller="Flavours" asp-action="Index">
+        <i class="fas fa-ice-cream"></i><br />
+        Våra Smaker
+    </a>
+</div>
+
 <div class="icecreamanimation">
     <img src="~/images/kulor1.png" alt="glassrån" class="scope" />
     <img src="~/images/ran.png" alt="glassrån" class="cone" />
 </div>
 <div class="text-center">
-    <h1 class="display-4">Välkommen till Glassigt</h1>
+    <h2>Det tycker i alla fall vi på Glassigt</h2>
     <p>Var inte en dumstrut, beställ din unika kombo av glassar och ta det kallt i sommar</p>
 </div>

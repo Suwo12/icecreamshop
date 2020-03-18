@@ -1,0 +1,61 @@
+﻿@model IEnumerable<icecreamshop.Models.OrderBox>
+
+@{
+    ViewData["Title"] = "Min Profil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="float:right;"><i class="fas fa-user-edit"></i></a>
+<div class="container text-center">
+    <h1>Min profil</h1>
+    <p> Hej @User.Identity.Name! </p>
+
+</div>
+<h1>Här är dina beställningar</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Totalsumma/Box
+            </th>
+            <th>
+                Datum för order
+            </th>
+            <th>
+                Smak
+            </th>
+            <th>Smakfull info</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderSum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Flavour.FlavourName)
+                </td>
+                <td style="display:none;">
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    <!-- <a asp-action="Edit" asp-route-id="@item.OrderBoxId">Edit</a> |-->
+                    | <a asp-controller="Flavours" asp-action="Details" asp-route-id="@item.OrderBoxId"><i class="fas fa-info-circle"></i></a> |
+                    
+                    <!-- <a asp-action="Delete" asp-route-id="@item.OrderBoxId">Delete</a>-->
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<h2>Mina uppgifter</h2>
+

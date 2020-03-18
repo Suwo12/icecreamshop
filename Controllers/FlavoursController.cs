@@ -77,6 +77,7 @@ namespace icecreamshop.Models
                 {
                     FlavourName = model.FlavourName,
                     FlavourDescription = model.FlavourDescription,
+                    FlavourPrice = model.FlavourPrice,
                     PhotoPath = uniqueFileName
                 };
 
@@ -87,6 +88,7 @@ namespace icecreamshop.Models
             return View();
         }
         // GET: Flavours/Edit/5
+        [HttpGet("smaker/redigera/")]
         [Authorize(Policy = "RequireAdmin")]//Kräver att man är Admin med using Microsoft.AspNetCore.Authorization;
         public async Task<IActionResult> Edit(int? id)
         {
@@ -104,10 +106,11 @@ namespace icecreamshop.Models
         }
 
         // POST: Flavours/Edit/5
+       
         [Authorize(Policy = "RequireAdmin")]//Kräver att man är Admin med using Microsoft.AspNetCore.Authorization;
-        [HttpPost]
+        [HttpPost("smaker/redigera/")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FlavourId,FlavourName,FlavourDescription")] Flavour flavour)
+        public async Task<IActionResult> Edit(int id, [Bind("FlavourId,FlavourName,FlavourDescription, FlavourPrice")] Flavour flavour)
         {
             if (id != flavour.FlavourId)
             {

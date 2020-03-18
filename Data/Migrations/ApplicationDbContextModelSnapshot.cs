@@ -254,6 +254,9 @@ namespace icecreamshop.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("FlavourPrice")
+                        .HasColumnType("float");
+
                     b.Property<string>("PhotoPath")
                         .HasColumnType("nvarchar(max)");
 

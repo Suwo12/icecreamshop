@@ -6,7 +6,7 @@
 
 <h1>Details</h1>
 
-<div>
+<div class="justify-content-center">
     <h4>Smakfull information</h4>
 
     <div class="row justify-content-center m-3" style="width: 18rem;">
@@ -16,20 +16,23 @@
             </div>
             <div class="card-body text-center">
                 <img class="card-img-top" src="@photoPath" alt="glassbild" asp-append-version="true" /><br />
-               
+
             </div>
             <div class="card-footer text-muted">
                 <h5>@Html.DisplayNameFor(model => model.FlavourDescription)</h5><br />
 
                 <p class="card-text">@Html.DisplayFor(model => model.FlavourDescription)</p>
+
+                <p class="card-text">@Html.DisplayFor(model => model.FlavourPrice)kronor/strut</p>
             </div>
         </div>
     </div>
-</div>
-<div>
-    @if (User.Identity.Name == "Admin@mail.com")
-    {
-        <a asp-action="Edit" asp-route-id="@Model.FlavourId">Edit</a> 
-    }
-<a asp-action="Index">Tillbaka till smaker</a>
+
+    <div>
+        @if (User.Identity.Name == "Admin@mail.com")
+        {
+            <a asp-action="Edit" asp-route-id="@Model.FlavourId"><i class="fas fa-edit"></i></a>
+        }
+        <a asp-action="Index"><i class="fas fa-arrow-circle-left"></i></a>
+    </div>
 </div>
