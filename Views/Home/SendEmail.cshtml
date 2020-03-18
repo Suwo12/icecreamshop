@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Kontakta oss";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Maila oss</h1>
+<br />
+<br />
+<p>Vi på Glassigt gillar att höra vad ni tycker och tänker<br />
+    Har du synpunkter eller kanske tips på en ny glassmak?<br />
+    Välkommen att maila oss nedan</p>
+
+@if (ViewBag.Error != null)
+{
+    <h3 class="ErrorMessage"> @ViewBag.Error </h3>
+}
+@if (ViewBag.Success != null)
+{
+    <h3 class="SuccessMessage"> @ViewBag.Success </h3>
+}
+
+<form method="post" action="kontakt">
+    <div class="container justify-content-center">
+        <div class="form-group" style="max-width: 500px;">
+            <!-- <span class="form-control-static">Receiver: </span>Döljer detta fält för att tvinga in att man skickar till glassigts mail -->
+            <input class="form-control" type="text" name="receiver" style="display:none;" value="glassigkontakt@gmail.com" /> <!--Döljer detta fält för att tvinga in att man skickar till glassigts mail -->
+            <span class="form-control-static">Titel: </span>
+            <input class="form-control" type="text" name="subject" /> <br />
+
+            <span class="form-control-static">Meddelande: </span>
+            <!-- <input class="form-control" type="text" name="message" /> <br />-->
+            <textarea class="form-control" type="text" name="message" rows="3"></textarea>
+            <input class="btn btn-primary" type="submit" value="Skicka" style="margin-top: 12px;" />
+        </div>
+    </div>
+</form>

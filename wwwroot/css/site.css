@@ -179,6 +179,12 @@ h4 {
     width: 17%;
     display: inline-block;
 }
+.SuccessMessage{
+    color:lightseagreen;
+}
+.ErrorMessage {
+    color: deeppink;
+}
 
 /*testing gif animation start*/
 .modal {

@@ -10,6 +10,8 @@ using icecreamshop.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.Net.Mail;//Tillägg för mail
+using System.Net;//Tillägg för mail
 
 namespace icecreamshop.Controllers
 {
@@ -54,6 +56,54 @@ namespace icecreamshop.Controllers
                             .Include(t => t.Flavour); //Hämtar ut dom beställningar inloggad user gjort
     
             return View(await userOrders.ToListAsync());
+        }
+
+        // Tillägg för mailfunktion //
+        [HttpGet("kontakt")] //Override default med annan sökväg/route
+        public ActionResult SendEmail()
+        {
+            return View();
+        }
+
+        //Tillägg för att ta emot post req från SendEmail form
+        [HttpPost("kontakt")]//Override default med annan sökväg/route
+        public ActionResult SendEmail(string receiver, string subject, string message)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var senderEmail = new MailAddress("glassigkontakt@gmail.com", "Glassig kund");//E-post som används som den man skickar ifrån
+                    var receiverEmail = new MailAddress(receiver, "Receiver");
+                    var password = "losen1234";//Lösenord för den mail man använder
+                    var sub = subject;//Lagrar ämne i variabel
+                    var body = message;//Lagrar meddelande i variabel
+                    var smtp = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Credentials = new NetworkCredential(senderEmail.Address, password)
+                    };
+                    using (var mess = new MailMessage(senderEmail, receiverEmail)
+                    {
+                        Subject = subject,
+                        Body = body
+                    })
+                    {
+                        smtp.Send(mess);
+                        ViewBag.Success = "Vi på glassigt tackar för ditt mail!";//Meddelde för att visa att mail kom fram skickas med viewbag till sidan
+                    }
+                    return View();
+                }
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = "Ajdå något gick fel, ditt mail skickades inte";//Meddelde för att visa att mail inte kunde skickas med viewbag till sidan
+            }
+            return View();
         }
     }
 }
