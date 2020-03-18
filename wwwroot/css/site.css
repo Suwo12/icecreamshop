@@ -84,13 +84,32 @@ button.accept-policy {
 .icecreamanimation {
     margin-bottom: 8%;
 }
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #695bb9;
+    background: #f6f3ff;
+    border-radius: 9px;
+}
+
+tr:hover {background-color:aliceblue;}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #695bb9;
+    color: white;
+}
 
 .logo {
     display: inline-block;
     float: left;
     width: 148px;
 }
-
+p {
+    margin-top: 0;
+    color: #524696;
+    margin-bottom: 1%;
+    line-height: 1.5em;
+}
 h3 {
     color: darkgray; 
 }
@@ -185,6 +204,7 @@ h4 {
 .ErrorMessage {
     color: deeppink;
 }
+
 
 /*testing gif animation start*/
 .modal {

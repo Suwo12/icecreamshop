@@ -6,10 +6,9 @@
 }
 
 <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="float:right;"><i class="fas fa-user-edit"></i></a>
-<div class="container text-center">
+<div class="container text-center" style="margin-bottom:5%;">
     <h1>Min profil</h1>
     <p> Hej @User.Identity.Name! </p>
-
 </div>
 <h1>Här är dina beställningar</h1>
 <table class="table">
@@ -46,7 +45,7 @@
                 </td>
                 <td>
                     <!-- <a asp-action="Edit" asp-route-id="@item.OrderBoxId">Edit</a> |-->
-                    | <a asp-controller="Flavours" asp-action="Details" asp-route-id="@item.OrderBoxId"><i class="fas fa-info-circle"></i></a> |
+                     <a asp-controller="Flavours" asp-action="Details" asp-route-id="@item.OrderBoxId"><i class="fas fa-info-circle"></i></a> 
                     
                     <!-- <a asp-action="Delete" asp-route-id="@item.OrderBoxId">Delete</a>-->
                 </td>
@@ -57,5 +56,5 @@
 
 
 
-<h2>Mina uppgifter</h2>
+
 

@@ -9,7 +9,7 @@
 <div class="justify-content-center">
     <h4>Smakfull information</h4>
 
-    <div class="row justify-content-center m-3" style="width: 18rem;">
+    <div class="justify-content-center" style="width: 18rem;">
         <div class="card text-center">
             <div class="card-header">
                 <h5 class="card-title">@Html.DisplayFor(model => model.FlavourName)</h5>
@@ -21,9 +21,9 @@
             <div class="card-footer text-muted">
                 <h5>@Html.DisplayNameFor(model => model.FlavourDescription)</h5><br />
 
-                <p class="card-text">@Html.DisplayFor(model => model.FlavourDescription)</p>
+                <p class="card-text">@Html.DisplayFor(model => model.FlavourDescription)</p><br /><br />
 
-                <p class="card-text">@Html.DisplayFor(model => model.FlavourPrice)kronor/strut</p>
+                <p class="card-text" style="color: #ff008a;font-weight: 800;">@Html.DisplayFor(model => model.FlavourPrice)kronor/strut</p>
             </div>
         </div>
     </div>
@@ -33,6 +33,6 @@
         {
             <a asp-action="Edit" asp-route-id="@Model.FlavourId"><i class="fas fa-edit"></i></a>
         }
-        <a asp-action="Index"><i class="fas fa-arrow-circle-left"></i></a>
+        <a asp-action="Index"><i style="font-size:2em;" class="fas fa-arrow-circle-left"></i></a>
     </div>
 </div>

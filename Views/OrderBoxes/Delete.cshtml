@@ -1,12 +1,12 @@
 ﻿@model icecreamshop.Models.OrderBox
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Radera beställning";
 }
 
-<h1>Delete</h1>
+<h1>Radera</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Är du säker på att du vill ta bort den här beställningen?</h3>
 <div>
     <h4>OrderBox</h4>
     <hr />
@@ -33,7 +33,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="OrderBoxId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Ta bort" class="btn btn-danger" /> |<br />
+        <a asp-action="Index">Tillbaka till ordrar</a>
     </form>
 </div>
