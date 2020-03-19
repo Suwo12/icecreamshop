@@ -98,7 +98,13 @@ input[type=button], input[type=submit], input[type=reset] {
     background-color: #695bb9;
     color: white;
 }
-
+.buttonStyle {
+    background-color: #695bb9;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 12px;
+    border: none;
+}
 .logo {
     display: inline-block;
     float: left;
@@ -228,7 +234,19 @@ h4 {
     color: #695bb9;
     border: 2px #695bb9 solid;
 }
+#searchform{
+    text-align:center;
+}
 
+.searchforminput {
+    border-radius: 5px;
+    border: 0.5px solid #fffeed;
+}
+#searchbutton {
+    border-radius: 5px;
+    padding: 3px 17px;
+    border: none;
+}
 /*testing gif animation start*/
 .modal {
     position: fixed;

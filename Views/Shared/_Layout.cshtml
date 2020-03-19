@@ -13,10 +13,10 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg navbar-toggleable-sm border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/logoyellow.png" alt="logotyp" class="logo" /></a><br />
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" 
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
                         aria-expanded="false" aria-label="Öppna och stäng hamburgermeny">
                     <span class="navbar-toggler-icon"><i style="color:#574c16; font-size: 1.4em;" class="fas fa-hamburger"></i></span>
                 </button>
@@ -38,15 +38,13 @@
         </nav>
     </header>
     <div class="container">
-
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - glassigt 
+            &copy; 2020 - glassigt
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

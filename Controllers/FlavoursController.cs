@@ -24,11 +24,30 @@ namespace icecreamshop.Models
         }
 
         // GET: Flavours
-       [HttpGet("smaker")] //Override default med annan sökväg/route
-        public async Task<IActionResult> Index()
+        /* [HttpGet("smaker")] //Override default med annan sökväg/route
+          public async Task<IActionResult> Index()
+          {
+              return View(await _context.Flavour.ToListAsync());
+          }*/
+
+        //GET MED SÖK NY START
+        // GET: Flavours
+        [HttpGet("smaker")] //Override default med annan sökväg/route
+        public async Task<IActionResult> Index(string searchString)//strängen skickas med som parameter i uri från startup cs routing
         {
-            return View(await _context.Flavour.ToListAsync());
+            //queryn har definierats här men inte körts mot databasen
+            var flavours = from a in _context.Flavour select a;
+
+            //Om strängen inte är tom ska filtrering ske smak-namn
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                flavours = flavours.Where(s => s.FlavourName.Contains(searchString)); //Lambda Expression i LINQ query
+            }
+
+            return View(await flavours.ToListAsync());
         }
+        //GET NY SLUT
+
 
         // GET: Flavours/Details/5
         [HttpGet("smaker/detaljer/")] //Override default med annan sökväg/route

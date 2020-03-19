@@ -4,14 +4,12 @@
     ViewData["Title"] = "Glassigt";
 }
 
-
-
 @if (SignInManager.IsSignedIn(User))
 {<div>
-    <div class="speech-bubble">
+        <div class="speech-bubble">
             <p class="bubblep">Du är inloggad som @User.Identity.Name</p>
         </div>
-        <img style="width:9%;" src="~/images/icecreamguy.png" alt="icecreamguy vector" class="icecreamguy"/>
+        <img style="width:9%;" src="~/images/icecreamguy.png" alt="icecreamguy vector" class="icecreamguy" />
     </div>
 }
 <div class="justify-content-center text-center">
@@ -21,7 +19,6 @@
           Våra Smaker
       </a>-->
 </div>
-
 <div class="icecreamanimation">
     <img src="~/images/kulor1.png" alt="glassrån" class="scope" />
     <img src="~/images/ran.png" alt="glassrån" class="cone" />
@@ -31,10 +28,8 @@
     <p>Var inte en dumstrut, beställ din unika kombo av glassar och ta det kallt i sommar</p>
 </div>
 <div style="position: fixed;bottom: 0;z-index: 900;">
-   
     <div class="speech-bubble">
         <a class="nav-link text-dark" aria-label="Länk till smaker" asp-area="" asp-controller="Flavours" asp-action="Index"><p class="bubblepsecond text-center">Klicka här så tar jag dig<br />till våra smaker</p></a>
     </div>
-    
-        <img style="width:22%;" src="~/images/icecreamguy.png" alt="icecreamguy vector" class="icecreamguysecond" />
+    <img style="width:22%;" src="~/images/icecreamguy.png" alt="icecreamguy vector" class="icecreamguysecond" />
 </div>

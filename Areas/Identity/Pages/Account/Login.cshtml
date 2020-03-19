@@ -15,12 +15,12 @@
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Input.Email"></label>
-                    <input asp-for="Input.Email" class="form-control"  aria-label="Fyll i E-post" />
+                    <input asp-for="Input.Email" class="form-control" aria-label="Fyll i E-post" />
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Input.Password"></label>
-                    <input asp-for="Input.Password" class="form-control"  aria-label="Fyll i lösenord"/>
+                    <input asp-for="Input.Password" class="form-control" aria-label="Fyll i lösenord" />
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit">Logga in</button>
+                    <button class="buttonStyle" type="submit">Logga in</button>
                 </div>
                 <div class="form-group">
                     <p>
@@ -48,18 +48,15 @@
     <div class="col-md-6 col-md-offset-2">
         <section>
             <h4>Glass ska ätas i stora lass...</h4>
-           
-                    <div>
-                        <p>
-                           Skönt att du har förstått det och registrerat ett konto hos oss på Glassigt.
-                            Välkommen att logga in!
-                        </p>
-                    </div>
-                
+            <div>
+                <p>
+                    Skönt att du har förstått det och registrerat ett konto hos oss på Glassigt.
+                    Välkommen att logga in!
+                </p>
+            </div>
         </section>
     </div>
 </div>
-
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

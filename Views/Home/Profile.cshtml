@@ -40,12 +40,12 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Flavour.FlavourName)
                 </td>
-                <td style="        display: none;">
+                <td style="display: none;">
                     @Html.DisplayFor(modelItem => item.UserId)
                 </td>
                 <td>
                     <!-- <a asp-action="Edit" asp-route-id="@item.OrderBoxId">Edit</a> |-->
-                     <a asp-controller="Flavours" asp-action="Details" asp-route-id="@item.OrderBoxId"><i class="fas fa-info-circle"></i></a> 
+                     <a asp-controller="OrderBoxes" asp-action="Details" asp-route-id="@item.OrderBoxId"><i class="fas fa-info-circle"></i></a> 
                     
                     <!-- <a asp-action="Delete" asp-route-id="@item.OrderBoxId">Delete</a>-->
                 </td>
