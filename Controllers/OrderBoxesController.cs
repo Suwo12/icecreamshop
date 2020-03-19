@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using icecreamshop.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace icecreamshop.Models
 {
@@ -23,6 +24,7 @@ namespace icecreamshop.Models
         }
 
         // GET: OrderBoxes
+        [Authorize(Policy="Admin")]//Bara tillgång för Admin role
         [HttpGet("ordrar")] //Override default med annan sökväg/route
         public async Task<IActionResult> Index()
         {

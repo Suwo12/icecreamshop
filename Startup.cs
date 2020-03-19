@@ -39,7 +39,7 @@ namespace icecreamshop
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("RequireAdmin",
-                policy => policy.RequireRole("Admin"));
+                policy => policy.RequireRole("Admin"));//Policy tillägg för Admin
             });
         }
 
