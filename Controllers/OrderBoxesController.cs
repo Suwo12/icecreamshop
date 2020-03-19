@@ -24,7 +24,7 @@ namespace icecreamshop.Models
         }
 
         // GET: OrderBoxes
-        [Authorize(Policy="Admin")]//Bara tillgång för Admin role
+        [Authorize(Policy="RequireAdmin")]//Bara tillgång för Admin role
         [HttpGet("ordrar")] //Override default med annan sökväg/route
         public async Task<IActionResult> Index()
         {
