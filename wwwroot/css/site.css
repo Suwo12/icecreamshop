@@ -24,7 +24,7 @@ a {
 
 /* Sticky footer styles
 -------------------------------------------------- */
-    html {
+html {
     font-size: 14px;
 }
 
@@ -56,9 +56,9 @@ button.accept-policy {
     background-color: #fefce0;
 }
 
-.navbar a {
-    color: #7d6555 !important;
-}
+    .navbar a {
+        color: #7d6555 !important;
+    }
 
 .cone {
     position: inherit;
@@ -84,6 +84,7 @@ button.accept-policy {
 .icecreamanimation {
     margin-bottom: 8%;
 }
+
 .table {
     width: 100%;
     margin-bottom: 1rem;
@@ -92,12 +93,15 @@ button.accept-policy {
     border-radius: 9px;
 }
 
-tr:hover {background-color:aliceblue;}
+tr:hover {
+    background-color: aliceblue;
+}
 
 input[type=button], input[type=submit], input[type=reset] {
     background-color: #695bb9;
     color: white;
 }
+
 .buttonStyle {
     background-color: #695bb9;
     color: white;
@@ -105,43 +109,52 @@ input[type=button], input[type=submit], input[type=reset] {
     border-radius: 12px;
     border: none;
 }
+
 .logo {
     display: inline-block;
     float: left;
     width: 148px;
 }
+
 p {
     margin-top: 0;
     color: #524696;
     margin-bottom: 1%;
     line-height: 1.5em;
 }
+
 h3 {
-    color: darkgray; 
+    color: darkgray;
 }
+
 h1, h2, h3 {
     font-family: 'Baloo Bhaina', 'Pacifico','Open Sans', sans-serif;
 }
+
 h2 {
     text-shadow: 0 0 10px #ffffff, 0 0 5px #b3d7ff;
     color: #695BB9;
     font-size: 3em;
 }
+
 h1 {
     text-shadow: 0 0 10px #ffffff, 0 0 5px #b3d7ff;
     color: #695BB9;
     font-size: 3.2em;
 }
+
 h3 {
     text-shadow: 0 0 10px #ffffff, 0 0 5px #b3d7ff;
     color: #695BB9;
     font-size: 2.3em;
 }
+
 h4 {
     text-shadow: 0 0 10px #ffffff, 0 0 5px #b3d7ff;
     color: #695BB9;
     font-size: 2em;
 }
+
 .buyButton {
     display: block;
     border-radius: 5px;
@@ -152,6 +165,7 @@ h4 {
     margin-top: 8%;
     text-transform: uppercase;
 }
+
 .speech-bubble {
     position: relative;
     background: #ffffff;
@@ -160,7 +174,8 @@ h4 {
     width: 27%;
     padding: 0.2%;
 }
-.speech-bubble:after {
+
+    .speech-bubble:after {
         content: '';
         position: absolute;
         bottom: 0;
@@ -173,13 +188,15 @@ h4 {
         border-left: 0;
         margin-left: -14px;
         margin-bottom: -28px;
-}
+    }
+
 .bubblep {
     margin-top: 1rem;
     margin-bottom: 1rem;
     font-size: 0.7em;
     color: cadetblue;
 }
+
 .bubblepsecond {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -191,10 +208,12 @@ h4 {
     -webkit-animation: jello-horizontal 0.9s both;
     animation: jello-horizontal 0.9s both;
 }
+
 .icecreamguysecond {
     -webkit-animation: bounce-top 0.9s 2 both;
     animation: bounce-top 0.9s 2 both;
 }
+
     .icecreamguysecond:hover {
         -webkit-animation: wobble-hor-bottom 0.8s both;
         animation: wobble-hor-bottom 0.8s both;
@@ -220,12 +239,15 @@ h4 {
     width: 17%;
     display: inline-block;
 }
-.SuccessMessage{
-    color:lightseagreen;
+
+.SuccessMessage {
+    color: lightseagreen;
 }
+
 .ErrorMessage {
     color: deeppink;
 }
+
 #mailForm {
     background: #ebe8fb;
     border-radius: 9px;
@@ -234,14 +256,16 @@ h4 {
     color: #695bb9;
     border: 2px #695bb9 solid;
 }
-#searchform{
-    text-align:center;
+
+#searchform {
+    text-align: center;
 }
 
 .searchforminput {
     border-radius: 5px;
     border: 0.5px solid #fffeed;
 }
+
 #searchbutton {
     border-radius: 5px;
     padding: 3px 17px;
@@ -301,9 +325,9 @@ body {
     line-height: 60px; /* Vertically center the text there */
 }
 
-.fas fa-arrow-circle-left{
-    font-size:2em;
-    color:aquamarine;
+.fas fa-arrow-circle-left {
+    font-size: 2em;
+    color: aquamarine;
 }
 /* Animations start
 -------------------------------------------------- */
