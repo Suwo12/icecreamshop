@@ -4,7 +4,7 @@
     ViewData["Title"] = "Ordrar";
 }
 
-<h1>Index</h1>
+<h1>Ordrar översikt</h1>
 
 <p>
     <a asp-action="Create">Lägg order</a>
@@ -41,9 +41,9 @@
                 @Html.DisplayFor(modelItem => item.UserId)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.OrderBoxId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.OrderBoxId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.OrderBoxId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.OrderBoxId">Ändra</a> |
+                <a asp-action="Details" asp-route-id="@item.OrderBoxId">Detaljer</a> |
+                <a asp-action="Delete" asp-route-id="@item.OrderBoxId">Ta bort</a>
             </td>
         </tr>
 }
