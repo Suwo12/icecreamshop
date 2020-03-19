@@ -140,9 +140,11 @@ h4 {
     display: block;
     border-radius: 5px;
     width: 100%;
-    background-color: lightsteelblue;
+    background-color: #8f83d8;
     padding: 0.3em;
+    color: white;
     margin-top: 8%;
+    text-transform: uppercase;
 }
 .speech-bubble {
     position: relative;
@@ -172,10 +174,20 @@ h4 {
     font-size: 0.7em;
     color: cadetblue;
 }
+.bubblepsecond {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9em;
+    color: mediumvioletred;
+}
 
 .icecreamguy {
     -webkit-animation: jello-horizontal 0.9s both;
     animation: jello-horizontal 0.9s both;
+}
+.icecreamguysecond {
+    -webkit-animation: bounce-top 0.9s 2 both;
+    animation: bounce-top 0.9s 2 both;
 }
 
 
@@ -204,7 +216,14 @@ h4 {
 .ErrorMessage {
     color: deeppink;
 }
-
+#mailForm {
+    background: #ebe8fb;
+    border-radius: 9px;
+    padding: 2%;
+    margin-top: 7%;
+    color: #695bb9;
+    border: 2px #695bb9 solid;
+}
 
 /*testing gif animation start*/
 .modal {
@@ -569,6 +588,121 @@ body {
     }
 }
 /*flavourLink jello end */
+/*Hoppande glass start*/
+@-webkit-keyframes bounce-top {
+    0% {
+        -webkit-transform: translateY(-45px);
+        transform: translateY(-45px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+        opacity: 1;
+    }
+
+    24% {
+        opacity: 1;
+    }
+
+    40% {
+        -webkit-transform: translateY(-24px);
+        transform: translateY(-24px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    65% {
+        -webkit-transform: translateY(-12px);
+        transform: translateY(-12px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    82% {
+        -webkit-transform: translateY(-6px);
+        transform: translateY(-6px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    93% {
+        -webkit-transform: translateY(-4px);
+        transform: translateY(-4px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    25%, 55%, 75%, 87% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    }
+
+    100% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+        opacity: 1;
+    }
+}
+
+@keyframes bounce-top {
+    0% {
+        -webkit-transform: translateY(-45px);
+        transform: translateY(-45px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+        opacity: 1;
+    }
+
+    24% {
+        opacity: 1;
+    }
+
+    40% {
+        -webkit-transform: translateY(-24px);
+        transform: translateY(-24px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    65% {
+        -webkit-transform: translateY(-12px);
+        transform: translateY(-12px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    82% {
+        -webkit-transform: translateY(-6px);
+        transform: translateY(-6px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    93% {
+        -webkit-transform: translateY(-4px);
+        transform: translateY(-4px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    25%, 55%, 75%, 87% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    }
+
+    100% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+        opacity: 1;
+    }
+}
+/*Hoppande glass slut*/
 
 /* Animations end
 -------------------------------------------------- */

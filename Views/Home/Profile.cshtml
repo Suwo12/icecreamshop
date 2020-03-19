@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="float:right;"><i class="fas fa-user-edit"></i></a>
+<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="float:right;"><i  style="font-size:1.5em; color:#695bb9;" class="fas fa-user-edit"></i></a>
 <div class="container text-center" style="margin-bottom:5%;">
     <h1>Min profil</h1>
     <p> Hej @User.Identity.Name! </p>
@@ -40,7 +40,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Flavour.FlavourName)
                 </td>
-                <td style="display:none;">
+                <td style="        display: none;">
                     @Html.DisplayFor(modelItem => item.UserId)
                 </td>
                 <td>

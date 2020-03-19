@@ -62,7 +62,7 @@ namespace icecreamshop.Controllers
             return View(await userOrders.ToListAsync());
         }
 
-        // Tillägg för mailfunktion //
+        // Tillägg för mailfunktion via App Send Grid //
         [HttpGet("kontakt")] //Override default med annan sökväg/route
         public ActionResult SendEmail()
         {
