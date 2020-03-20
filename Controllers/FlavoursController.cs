@@ -107,7 +107,7 @@ namespace icecreamshop.Models
             return View();
         }
         // GET: Flavours/Edit/5
-        [HttpGet("smaker/redigera/")]
+      [HttpGet]
         [Authorize(Policy = "RequireAdmin")]//Kräver att man är Admin med using Microsoft.AspNetCore.Authorization;
         public async Task<IActionResult> Edit(int? id)
         {
@@ -127,9 +127,9 @@ namespace icecreamshop.Models
         // POST: Flavours/Edit/5
        
         [Authorize(Policy = "RequireAdmin")]//Kräver att man är Admin med using Microsoft.AspNetCore.Authorization;
-        [HttpPost("smaker/redigera/")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FlavourId,FlavourName,FlavourDescription, FlavourPrice")] Flavour flavour)
+        public async Task<IActionResult> Edit(int id, [Bind("FlavourId,FlavourName,FlavourDescription,FlavourPrice,PhotoPath")] Flavour flavour)
         {
             if (id != flavour.FlavourId)
             {
